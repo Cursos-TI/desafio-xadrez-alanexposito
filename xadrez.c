@@ -14,12 +14,13 @@ int main() {
     
     do
     {
-        //Menu para escolha da peça a ser mivimentada.
+        //Menu para escolha da peça a ser movimentada.
         printf("\nQual peça deseja movimentar?\n");
         printf("1 - Torre.\n");
         printf("2 - Bispo.\n");
         printf("3 - Rainha.\n");
-        printf("4 - Sair.\n");
+        printf("4 - Cavalo.\n");
+        printf("5 - Sair.\n");
         scanf("%i", &menu1);
         
         //Usei um Switch para fazer o menu funcionar dependendo da escolha do usuario.
@@ -77,8 +78,31 @@ int main() {
                         mov_Rainha ++;
                     } while (mov_Rainha < rainha_casas);
                     break;
-            // Case 4 é apenas para simular a saida do jogo.
-            case 4:
+            //No case 4 tive que usar Loop ANinhado para fazer o movimenta do cavalo, já que preciso 
+            //que ele além de ir para cima, vá para algum dos lados. Esquerda ou Direita.
+            case 4:        
+                int cavalo_casas = 0;
+                char cavalo_lado [10];
+                
+                printf("\nQual lado deseja movimentar? Digite Esquerda ou Direita.\n");
+                scanf("%s", cavalo_lado);
+                                
+                    while (cavalo_casas < 1)
+                        {
+                        printf("\nCavalo está se movimentando para:\n");
+                            for (int i = 0; i < 2; i++)
+                                {
+                                printf("Cima\n");
+                                }
+                        printf("%s\n", cavalo_lado);
+                        cavalo_casas++;
+                        } 
+                        
+                    break;
+
+
+            // Case 5 é apenas para simular a saida do jogo.
+            case 5:
                 printf("Saindo...");
                 break;
     //default caso o usuario digite algum número deiferente das opções disponiveis.
@@ -88,29 +112,11 @@ int main() {
     }
     // O While do menu principal mantém o programa rodando. Se o usuário digitar 4, 
     // a condição torna-se falsa e o loop encerra, fechando o programa. 
-    } while (menu1 != 4);
+    } while (menu1 != 5);
 
     
     
-     /*   printf("\nMovimentando o BISPO 5 vezes para a diagonal (Cima, Direita).\n");
-        
-        while (mov_Bispo < 5)
-    {
-        
-        printf("Cima, Direita.\n");
-        mov_Bispo++;
-    } 
-    
-        printf("\nMovimentando a RAINHA 8 vezes para a esquerda.\n");
-    
-        do
-    {
-       printf("Esquerda.\n");
-        mov_Rainha ++;
-    }   while (mov_Rainha < 8);*/
-    
-
-
+   
     return 0;
 }
 
